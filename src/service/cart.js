@@ -33,3 +33,15 @@ export function getByCartItemIds(params) {
         data: params
     })
 }
+
+// 添加商品到购物车中
+export function addGoodsToShoppingCart(params) {
+    return axios({
+        method: 'post',
+        url: 'api/mall/v1/shoppingcart/add',
+        headers: {
+            'x-token' : window.localStorage.getItem('x-token')
+        },
+        data: params
+    })
+}

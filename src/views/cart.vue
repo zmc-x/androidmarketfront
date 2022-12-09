@@ -95,7 +95,7 @@ export default {
             this.$router.go(-1)
         },
         goTo() {
-            this.$router.push({ path: '/' })
+            this.$router.push({ path: '/home' })
         },
         async onChange(value, detail) {
             if (this.lists.filter(item => item.cartId == detail.name)[0].count == value) return

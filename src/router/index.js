@@ -20,6 +20,11 @@ const routes = [
   },
   {
     path: '/',
+    component: () => import('@/views/home.vue'),
+    redirect: '/home'
+  },
+  {
+    path: '/home',
     component: () => import('@/views/home.vue')
   },
   {
@@ -55,6 +60,10 @@ const routes = [
   {
     path: '/user/orderdetail',
     component: () => import('@/views/orderdetail.vue')
+  },
+  {
+    path: '/goodsdetail/:id/:specificationid',
+    component: () => import('@/views/goodsdetail.vue')
   }
 ]
 

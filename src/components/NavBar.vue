@@ -2,7 +2,7 @@
     <div>
         <div>
             <van-tabbar v-model="active">
-                <van-tabbar-item icon="home-o" replace to="/">
+                <van-tabbar-item icon="home-o" replace to="/home">
                     主页
                 </van-tabbar-item>
                 <van-tabbar-item icon="search" replace to="/category">
@@ -30,11 +30,11 @@ import { Toast } from 'vant'
 export default {
     data() {
         return {
-            active: '0',
+            active: 0,
         };
     },
     mounted: function () {
-        if (window.localStorage.getItem("x-token") == null) {
+        if (window.localStorage.getItem("x-token") == null && !window.location.hash.includes('#/home')) {
             Toast.fail('未登录！')
             this.$router.push({ path: "/login" });
         }
@@ -47,7 +47,7 @@ export default {
             this.active = 2
         } else if (navBarActive.includes('#/user')) {
             this.active = 3
-        } else if (navBarActive.includes('#/')) {
+        } else if (navBarActive.includes('#/home')) {
             this.active = 0
         }
     },

@@ -54,14 +54,14 @@ export default {
                 }
             }
             let param = {
-                cartids : [],
+                cartids: [],
             }
             // 判断this.cartids 是否为数组
             if (Array.isArray(this.cartids)) {
                 var len = this.cartids.length
                 for (var i = 0; i < len; i++) this.cartids[i] = parseInt(this.cartids[i])
                 param.cartids = this.cartids
-            } 
+            }
             else {
                 this.cartids = parseInt(this.cartids)
                 param.cartids = [this.cartids]

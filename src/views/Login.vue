@@ -65,7 +65,7 @@ export default {
                 else {
                     _this.setStorage(signInInfo.data.token)
                     Toast.success('登录成功！')
-                    window.location.href = '/'
+                    window.location.href = '#/home'
                 }
             })
         },
