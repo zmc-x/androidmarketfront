@@ -32,6 +32,8 @@
 
 <script>
 const axios = require('axios')
+axios.defaults.baseURL = 'api'
+// axios.defaultes.baseURL = 'http://101.35.48.153:1234'
 import { Toast } from 'vant'
 import { Notify } from 'vant'
 import sHeader from '@/components/simpleheader.vue'
@@ -57,7 +59,7 @@ export default {
                 message: '加载中...',
                 forbidClick: true,
             });
-            axios.post("api/mall/v1/user/Login", this.userinfo).then(function (response) {
+            axios.post("/mall/v1/user/Login", this.userinfo).then(function (response) {
                 var signInInfo = response.data
                 if(signInInfo.data == null) {
                     Toast.fail('登录失败！')
@@ -76,7 +78,7 @@ export default {
                 message: '加载中...',
                 forbidClick: true,
             });
-            axios.post("api/mall/v1/user/signup", this.userinfo).then(function (response) {
+            axios.post("/mall/v1/user/signup", this.userinfo).then(function (response) {
                 // 注册成功
                 if(response.data.resultCode == 200) {
                     Toast.success('注册成功！')

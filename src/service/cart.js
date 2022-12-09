@@ -1,9 +1,10 @@
 import axios from 'axios'
-
+axios.defaults.baseURL = 'api'
+// axios.defaultes.baseURL = 'http://101.35.48.153:1234'
 export function modifyCart(params) {
     return axios({
         method: 'post',
-        url: 'api/mall/v1/shoppingcart/updatecount',
+        url: '/mall/v1/shoppingcart/updatecount',
         headers: {
             'x-token': window.localStorage.getItem('x-token')
         },
@@ -15,7 +16,7 @@ export function deleteCartItem(ids) {
     // console.log(ids)
     return axios({
         method: 'delete',
-        url: 'api/mall/v1/shoppingcart/delete',
+        url: '/mall/v1/shoppingcart/delete',
         headers: {
             'x-token' : window.localStorage.getItem('x-token')
         },
@@ -26,7 +27,7 @@ export function deleteCartItem(ids) {
 export function getByCartItemIds(params) {
     return axios({
         method: 'post',
-        url: 'api/mall/v1/shoppingcart/queryById',
+        url: '/mall/v1/shoppingcart/queryById',
         headers: {
             'x-token' : window.localStorage.getItem('x-token')
         },
@@ -38,7 +39,7 @@ export function getByCartItemIds(params) {
 export function addGoodsToShoppingCart(params) {
     return axios({
         method: 'post',
-        url: 'api/mall/v1/shoppingcart/add',
+        url: '/mall/v1/shoppingcart/add',
         headers: {
             'x-token' : window.localStorage.getItem('x-token')
         },

@@ -26,6 +26,8 @@ import { Notify } from 'vant';
 import navBar from '@/components/NavBar.vue'
 import sHeader from '@/components/simpleheader.vue'
 const axios = require('axios')
+axios.defaults.baseURL = 'api'
+// axios.defaultes.baseURL = 'http://101.35.48.153:1234'
 export default {
     methods: {
         // 账号操作
@@ -52,7 +54,7 @@ export default {
         let _this = this
         axios({
             method: 'get',
-            url: 'api/mall/v1/user/info',
+            url: '/mall/v1/user/info',
             headers: {
                 'x-token': window.localStorage.getItem('x-token')
             }

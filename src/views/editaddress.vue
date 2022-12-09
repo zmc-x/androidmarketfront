@@ -14,6 +14,8 @@ import { Notify } from 'vant';
 import { areaList } from '@vant/area-data';
 import sHeader from '@/components/simpleheader.vue'
 const axios = require('axios')
+axios.defaults.baseURL = 'api'
+// axios.defaultes.baseURL = 'http://101.35.48.153:1234'
 const _ = require('lodash')
 export default {
     data() {
@@ -74,7 +76,7 @@ export default {
             let _this = this
             axios({
                 method: 'delete',
-                url: 'api/mall/v1/address/delete',
+                url: '/mall/v1/address/delete',
                 headers: {
                     'x-token': window.localStorage.getItem('x-token')
                 },
@@ -106,7 +108,7 @@ export default {
             let _this = this
             axios({
                 method: 'post',
-                url: 'api/mall/v1/address/update',
+                url: '/mall/v1/address/update',
                 headers: {
                     'x-token': window.localStorage.getItem('x-token')
                 },
