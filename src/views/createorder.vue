@@ -2,7 +2,7 @@
     <div>
         <s-header :title="'生成订单'" :back="'/user/shoppingcart'"></s-header>
         <van-contact-card :type="location.id != undefined ? 'edit' : 'add'" @click="onAdd" :name="location.name"
-            :tel="location.tel + ''" />
+            :tel="location.tel + ''" add-text="添加收件人&收货地址" />
         <van-cell-group v-for="(item, index) in lists" :key="index">
             <van-card :num="item.count" :price="item.price" :desc="('内存：' + item.specific + ';' + '颜色：' + item.color)"
                 :title="item.goodsName" :thumb="item.coverImage" />
@@ -66,7 +66,7 @@ export default {
                 this.cartids = parseInt(this.cartids)
                 param.cartids = [this.cartids]
             }
-            console.log(param)
+            // console.log(param)
             const { data } = await getByCartItemIds(param)
             this.lists = data.data
         },
@@ -94,8 +94,18 @@ export default {
                     price: this.lists[i].price
                 })
             }
+            var cartids_mid = new Array
+            // 判断是否为数组
+            if(Array.isArray(this.cartids)) {
+                for(var i = 0; i < this.cartids.length; i++) {
+                    cartids_mid.push(parseInt(this.cartids[i]))
+                }
+            }
+            else {
+                cartids_mid.push(parseInt(this.cartids))
+            }
             const params = {
-                cartids: this.cartids,
+                cartids: cartids_mid,
                 order: {
                     addressid: parseInt(this.location.id),
                     allprice: this.total,

@@ -46,8 +46,6 @@ import { Notify, Toast } from 'vant'
 import navBar from '@/components/NavBar.vue'
 import { deleteCartItem, modifyCart } from '../service/cart'
 const axios = require('axios')
-axios.defaults.baseURL = 'api'
-// axios.defaultes.baseURL = 'http://101.35.48.153:1234'
 export default {
     components: { navBar },
     computed: {
@@ -77,7 +75,8 @@ export default {
             let _this = this
             axios({
                 method: 'get',
-                url: '/mall/v1/shoppingcart/query',
+                url: 'http://zmcicloud.cn:1234/mall/v1/shoppingcart/query',
+                // url: 'api/mall/v1/shoppingcart/query',
                 headers: {
                     'x-token': window.localStorage.getItem('x-token')
                 },

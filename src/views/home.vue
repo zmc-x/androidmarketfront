@@ -5,7 +5,7 @@
             <div class="header-search">
                 <span class="app-name">Android商城</span>
                 <i class="iconfont icon-search"></i>
-                <router-link class="search-title" to="">山河无恙，人间皆安</router-link>
+                <router-link class="search-title" to="./product/%20">山河无恙，人间皆安</router-link>
             </div>
             <router-link class="login" to="./login" v-if="!isLogin">登录</router-link>
             <router-link class="login" to="./user" v-else>
@@ -126,7 +126,13 @@ export default {
             scrollTop > 100 ? this.headerScroll = true : this.headerScroll = false
         },
         goToDetail(item) {
-            this.$router.push({ path: `goodsdetail/${item.goodsId}/${item.specificationId}` })
+            // 判断是否登录
+            if(window.localStorage.getItem('x-token') != null) {
+                this.$router.push({ path: `/goodsdetail/${item.goodsId}/${item.specificationId}` })
+            }
+            else{
+                this.$router.push({path: '/login'})
+            }
         },
         clickCategory() {
             Toast("抱歉~，该功能未完成。敬请期待！")
@@ -134,6 +140,7 @@ export default {
     }
 }
 </script>
+
 <style lang="less" scoped >
 @import '../common/style/mixin';
 

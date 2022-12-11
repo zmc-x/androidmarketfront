@@ -23,7 +23,7 @@ export default {
         });
         axios({
             method: 'get',
-            url: 'api/mall/v1/address/select',
+            url: 'http://zmcicloud.cn:1234/mall/v1/address/select',
             headers: {
                 'x-token': window.localStorage.getItem('x-token')
             }

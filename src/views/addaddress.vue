@@ -34,7 +34,7 @@ export default {
             let _this = this
             axios({
                 method: 'post',
-                url: 'api/mall/v1/address/add',
+                url: 'http://zmcicloud.cn:1234/mall/v1/address/add',
                 headers: {
                     'x-token': window.localStorage.getItem('x-token')
                 },

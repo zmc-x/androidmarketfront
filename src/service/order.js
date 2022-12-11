@@ -1,11 +1,11 @@
 import axios from "axios";
-axios.defaults.baseURL = 'api'
-// axios.defaultes.baseURL = 'http://101.35.48.153:1234'
+
 // 创建订单
 export function createorder(params) {
     return axios({
         method: 'post',
-        url: '/mall/v1/order/create',
+        // url: 'api/mall/v1/order/create',
+        url: 'http://zmcicloud.cn:1234/mall/v1/order/create',
         headers: {
             'x-token' : window.localStorage.getItem('x-token')
         },
@@ -17,7 +17,8 @@ export function createorder(params) {
 export function updateorder(orderid, updatetype) {
     return axios({
         method: 'get',
-        url: '/mall/v1/order/update/' + updatetype + '?orderid=' + parseInt(orderid),
+        // url: 'api/mall/v1/order/update/' + updatetype + '?orderid=' + parseInt(orderid),
+        url: 'http://zmcicloud.cn:1234/mall/v1/order/update/'  + updatetype + '?orderid=' + parseInt(orderid),
         headers: {
             'x-token' : window.localStorage.getItem('x-token')
         },
@@ -28,7 +29,8 @@ export function updateorder(orderid, updatetype) {
 export function queryOrderByStatus(Status) {
     return axios({
         methods: 'get',
-        url: '/mall/v1/order/query/' + Status,
+        url: 'http://zmcicloud.cn:1234/mall/v1/order/query/' + Status,
+        // url: 'api/mall/v1/order/query/' + Status,
         headers: {
             'x-token' : window.localStorage.getItem('x-token')
         }
@@ -39,7 +41,8 @@ export function queryOrderByStatus(Status) {
 export function queryOrderInfo(orderid) {
     return axios({
         method: 'get',
-        url: '/mall/v1/order/queryinfo?orderid=' + orderid,
+        url: 'http://zmcicloud.cn:1234/mall/v1/order/queryinfo?orderid=' + orderid,
+        // url: 'api/mall/v1/order/queryinfo?orderid=' + orderid,
         headers: {
             'x-token' : window.localStorage.getItem('x-token')
         }

@@ -8,6 +8,10 @@
                 <van-field v-model="userinfo.password" type="password" name="密码" label="密码" placeholder="密码"
                     @touchstart.native.stop="show = true" :rules="[{ required: true, message: '请填写密码' }]" />
                 <van-number-keyboard v-model="userinfo.password" :show="show" @blur="show = false" />
+                <van-radio-group v-model="radio" direction="horizontal">
+                    <van-radio name="1">商城用户登录</van-radio>
+                    <van-radio name="2">商城后台管理平台登录</van-radio>
+                </van-radio-group>
                 <div style="margin: 16px;">
                     <div @click="changetype('signup')" style="color:blue">没有账号？立即注册</div>
                     <van-button round block type="info" native-type="submit">登录</van-button>
@@ -32,14 +36,12 @@
 
 <script>
 const axios = require('axios')
-axios.defaults.baseURL = 'api'
-// axios.defaultes.baseURL = 'http://101.35.48.153:1234'
 import { Toast } from 'vant'
 import { Notify } from 'vant'
 import sHeader from '@/components/simpleheader.vue'
 export default {
     name: "userLogin",
-    components: {sHeader},
+    components: { sHeader },
     data() {
         return {
             title: '',
@@ -49,21 +51,27 @@ export default {
                 password: '',       // 密码
             },
             show: false,        // 密码输入键盘
+            radio: '1',
         }
     },
     methods: {
         // 登录
         onSignIn() {
+            if(this.radio == '2') {
+                Toast("开发中。。。敬请期待！")
+                return 
+            }
             let _this = this
             Toast.loading({
                 message: '加载中...',
                 forbidClick: true,
             });
-            axios.post("/mall/v1/user/Login", this.userinfo).then(function (response) {
+            // axios.post("api/mall/v1/user/Login", this.userinfo).then(function (response) {
+            axios.post("http://zmcicloud.cn:1234/mall/v1/user/Login", this.userinfo).then(function (response) {
                 var signInInfo = response.data
-                if(signInInfo.data == null) {
+                if (signInInfo.data == null) {
                     Toast.fail('登录失败！')
-                } 
+                }
                 else {
                     _this.setStorage(signInInfo.data.token)
                     Toast.success('登录成功！')
@@ -78,9 +86,10 @@ export default {
                 message: '加载中...',
                 forbidClick: true,
             });
-            axios.post("/mall/v1/user/signup", this.userinfo).then(function (response) {
+            // axios.post("api/mall/v1/user/signup", this.userinfo).then(function (response) {
+            axios.post("http://zmcicloud.cn:1234/mall/v1/user/signup", this.userinfo).then(function (response) {
                 // 注册成功
-                if(response.data.resultCode == 200) {
+                if (response.data.resultCode == 200) {
                     Toast.success('注册成功！')
                     Notify({ type: 'success', message: '请返回登录！' });
                     // return signup

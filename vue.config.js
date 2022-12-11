@@ -21,15 +21,16 @@ module.exports = defineConfig({
     client: {
       webSocketURL: 'ws://0.0.0.0:8080/ws',
     },
-    proxy: {
-      '/api': {
-        target: 'http://101.35.48.153:1234',
-        ws: false, // proxy websockets
-        changOrigin: true, // 是否允许跨域
-        pathRewrite: { // 重定向
-          "^/api": ""
-        }
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     // target: 'http://101.35.48.153:1234',
+    //     target: 'http://127.0.0.1:1234',
+    //     ws: false, // proxy websockets
+    //     changOrigin: true, // 是否允许跨域
+    //     pathRewrite: { // 重定向
+    //       "^/api": ""
+    //     }
+    //   }
+    // }
   },
 })
